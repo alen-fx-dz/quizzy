@@ -1,0 +1,70 @@
+{% extends "core/base.html" %}
+
+
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="row">
+        <div class="col text-end" id="pruba-text">
+            <span>Proxima trivia: {{time_now|date:"l d F"}}</span>
+            <button class="btn btn-primary" id="the_button" type="button">Read More</button>
+            <textarea class="form-control" id="the_area" cols="30" rows="3"></textarea>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <p class="replace">¡Bienvenidos a la Trivia del Conocimiento General! Prepárense para poner a prueba su sabiduría en este desafío lleno de preguntas variadas. Desde la ciencia hasta la cultura pop, cada pregunta ha sido cuidadosamente seleccionada para desafiar su mente. Responde con rapidez y precisión, ya que al final revelaremos tus resultados y descubrirás qué tan bien conoces el mundo que te rodea. ¡Buena suerte y que comience la Trivia!</p>        
+        </div>
+    </div>    
+    <section class="row">
+        <div class="col-4">
+            <h3>Variedad de Categorías</h3>
+            <p>Desde historia y ciencia hasta cultura pop y deportes, tenemos una amplia gama de categorías para satisfacer todos los gustos.</p>
+        </div>
+        <div class="col">
+            <h3>Desafíos Diarios</h3>
+            <p>Mantenemos la emoción viva con desafíos diarios que pondrán a prueba tus habilidades y te mantendrán regresando por más.</p>
+        </div>
+        <div class="col">
+            <h3>Comunidad Activa</h3>
+            <p>Únete a nuestra creciente comunidad de entusiastas de la trivia, comparte tus logros y desafía a amigos para ver quién tiene el conocimiento supremo.</p>
+        </div>
+    </section>
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="{% static 'normal.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Normal</h5>
+                    <p class="card-text">Take the time to respond wisely.</p>
+                    <a href="#" class="btn btn-primary">Go</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="{% static 'time_out.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Time Out</h5>
+                    <p class="card-text">10 seconds to answer correctly.</p>
+                    <a href="#" class="btn btn-primary">Go</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="{% static 'yes_no.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">50 / 50</h5>
+                    <p class="card-text">You only have two options to choose from.</p>
+                    <a href="#" class="btn btn-primary">Go</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

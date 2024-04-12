@@ -1,0 +1,36 @@
+{% extends "core/base.html" %}
+
+{% block title %}My Trivia{% endblock title %}
+
+{% block content %}
+
+<div class="container-md">
+    <div class="row">
+        <div class="col offset-3">
+            <h3>Questions <a class="btn btn-primary" href="{% url 'trivia:question-create' pk_trivia %}" role="button"><i class="bi bi-plus-circle"></i></a></h3>
+        </div>
+    </div>
+    <!-- PREGUNTAS -->
+    {% for query in object_list %}
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <h5>{{query.question_text}}</h5>
+        </div>
+        <div class="col-1">
+            <a class="btn btn-primary" href="{% url 'trivia:question-delete' query.id %}"><i class="bi bi-trash"></i></a>
+        </div>
+    </div>
+    <!-- RESPUESTAS -->
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <ul class="list-group mx-3 my-3">
+                {% for choise in query.choise_set.all %}
+                <li class="list-group-item">{{ choise.choise_text }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

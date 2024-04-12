@@ -1,0 +1,25 @@
+{% extends "core/base.html" %}
+
+{% block title %}Create{% endblock title %}
+
+{% block content %}
+<div class="container">
+<form action="{% url 'trivia:create' %}" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="row mb-3">
+        {{ field.errors }}
+        <div class="col-auto">
+            <label class="form-label" for="{{ field.auto_id }}" >{{ field.label }}</label>
+            {{ field }}
+            {% if field.help_text %}
+            <span class="form-text">{{ field.help_text|safe }}</span>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+    <a class="btn btn-primary" href="{% url 'trivia:list' %}">Cancel</a>
+    <button class="btn btn-primary" type="submit">Continue</button>    
+</form>
+</div>
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends "core/base.html" %}
+
+{% block title %}Reply{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <!-- Formulario para Actualizar Trivia -->
+    <form action="#" method="post">
+        <div class="row mb-4 justify-content-center">
+            <div class="col-4">
+                {{ form.theme }}
+            </div>
+            <div class="col-2 mb">
+                {{form.type_trivia}}
+            </div>
+        </div>
+    </form>
+    <!-- Enlace para agregar mas Preguntas -->
+    <div class="row">
+        <div class="col offset-3">
+            <h3>Questions <a class="btn btn-primary" href="{% url 'trivia:question-create' trivia.id %}" role="button"><i class="bi bi-plus-circle"></i></a></h3>
+        </div>
+    </div>
+    <!-- Enlace para agregar mas Preguntas -->
+    {% for question in trivia.question_set.all %}
+    <div class="row mb-5 justify-content-center">
+        <!-- Pregunta -->
+        <div class="col-6">
+            <h5>{{ question.question_text }} <a class="btn btn-primary" href="{% url 'trivia:question-delete' question.id %}"><i class="bi bi-trash"></i></a></h5>
+            <ul class="list-group">
+                {% for choise in question.choise_set.all %}
+                <li class="list-group-item">{{ choise.choise_text }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

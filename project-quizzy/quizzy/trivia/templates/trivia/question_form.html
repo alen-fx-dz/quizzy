@@ -1,0 +1,27 @@
+{% extends "core/base.html" %}
+
+{% block title %}Trivia{% endblock title %}
+
+{% block content %}
+
+<form action="{% url 'trivia:question-create' pk_trivia %}" method="post">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <h3>Create your question</h3>
+                <!-- <label class="form-label" for="{{form.trivia.id_for_label}}">Id-question</label> -->
+                <input class="form-control mb-3" type="text" name="{{form.trivia.name}}" id="{{form.trivia.id_for_label}}" value="{{pk_trivia}}" hidden>
+
+                <label class="form-label" for="{{form.question_text.id_for_label}}">{{form.question_text.label}}</label>
+                {% if form.question_text.help_text %}
+                <span class="text-primary">{{form.question_text.help_text}}</span>
+                {% endif %}
+                {{ form.question_text }}
+                <button class="btn btn-primary mt-3" type="submit">Create</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}

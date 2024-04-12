@@ -1,0 +1,38 @@
+{% extends "core/base.html" %}
+
+{% block title %}Update{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <!-- Tema -->
+        <div class="col-12">
+            <h2 class="text-center">
+                {{ trivia.theme }}
+                <span class="badge bg-primary">
+                    {% if trivia.type_trivia == 'NO' %}
+                        normal
+                    {% elif trivia.type_trivia == 'YN' %}
+                        yes or no
+                    {% else %}
+                        time out
+                    {% endif %}
+                </span>
+            </h2>
+        </div>
+        {% for question in trivia.question_set.all %}
+        <!-- Pregunta -->
+        <div class="col-6">
+            <h5>{{ question.question_text }}</h5>
+            <ul class="list-group">
+                {% for choise in question.choise_set.all %}
+                <li class="list-group-item">{{ choise.choise_text }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
